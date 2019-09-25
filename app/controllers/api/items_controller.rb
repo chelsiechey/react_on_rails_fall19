@@ -15,13 +15,13 @@ class Api::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(complete: !@item.complete)
-    render json: @item
-    # if @item.update(item_params)
-    #   render json: @item
-    # else
-    #   render json: { errors: @items.errors }, status: :unprocessable_entity
-    # end
+    # @item.update(complete: !@item.complete)
+    # render json: @item
+    if @item.update(item_params)
+      render json: @item
+    else
+      render json: { errors: @items.errors }, status: :unprocessable_entity
+    end
       
   end
 
